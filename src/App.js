@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { getUserData, getUserRepos, getStarredRepos } from './api';
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
@@ -6,16 +6,25 @@ import Search from './components/Search';
 import Button from './components/Button';
 import User from './User';
 import Repos from './Repos';
+import NoUser from './NoUser';
 
 function App() {
 	const [ value, setValue ] = useState('');
-	const [ userData, setUserData ] = useState([]);
+	const [ userData, setUserData ] = useState({});
 	const [ repoData, setRepoData ] = useState([]);
 	const [ starredData, setStarredData ] = useState([]);
 
+	const history = useHistory();
 	const location = useLocation();
 
-	const history = useHistory();
+	useEffect(
+		() => {
+			const pathName = location.pathname;
+			const name = pathName.substr(1);
+			fetchUser(name);
+		},
+		[ location && location.pathname.legth > 1 ]
+	);
 
 	const fetchUser = (name) => {
 		if (name) {
@@ -23,7 +32,7 @@ function App() {
 				.then((response) => {
 					if (Object.keys(response).length > 0) setUserData(response.data);
 				})
-				.catch((err) => err);
+				.catch((err) => setUserData({}));
 			history.push(`/${name}`);
 		}
 	};
@@ -68,7 +77,14 @@ function App() {
 					<Repos data={repoData} />
 				</Route>
 				<Route path="/:user">
-					<User data={userData} fetchRepos={fetchRepos} fetchStarred={fetchStarred} />
+					{Object.keys(userData).length > 0 ? (
+						<User data={userData} fetchRepos={fetchRepos} fetchStarred={fetchStarred} />
+					) : (
+						<NoUser />
+					)}
+				</Route>
+				<Route exact path="/">
+					<NoUser />
 				</Route>
 			</Switch>
 		</div>

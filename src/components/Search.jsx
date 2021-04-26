@@ -1,6 +1,8 @@
 import Button from './Button'
 
 const Search = ({ value, setValue, onClick }) => {
+
+
   return (
     <div className="input-group flex-nowrap">
       <span className="input-group-text" id="basic-addon1">
@@ -10,12 +12,12 @@ const Search = ({ value, setValue, onClick }) => {
         value={value}
         type="text"
         className="form-control"
-        placeholder="Username"
+        placeholder="Insert username"
         aria-label="Username"
         aria-describedby="basic-addon1"
         onChange={(e) => setValue(e.target.value)}
       />
-      <Button label={'Find'} onClick={onClick} bootstrap={"btn-success"} />
+      <Button id="find" label={'Find'} onClick={onClick} bootstrap={"btn-success"} />
     </div>
   );
 };
