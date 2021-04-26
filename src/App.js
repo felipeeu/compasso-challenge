@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import { getUserData, getUserRepos, getStarredRepos } from './api';
-import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import Search from './components/Search';
 import Button from './components/Button';
 import User from './User';
@@ -15,16 +15,6 @@ function App() {
 	const [ starredData, setStarredData ] = useState([]);
 
 	const history = useHistory();
-	const location = useLocation();
-
-	useEffect(
-		() => {
-			const pathName = location.pathname;
-			const name = pathName.substr(1);
-			fetchUser(name);
-		},
-		[ location && location.pathname.legth > 1 ]
-	);
 
 	const fetchUser = (name) => {
 		if (name) {
