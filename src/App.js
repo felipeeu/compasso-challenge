@@ -6,7 +6,6 @@ import Search from './components/Search';
 import Button from './components/Button';
 import User from './User';
 import Repos from './Repos';
-import Starred from './Starred';
 
 function App() {
 	const [ value, setValue ] = useState('');
@@ -51,11 +50,21 @@ function App() {
 			<Search value={value} setValue={setValue} onClick={() => fetchUser(value)} />
 			<Switch>
 				<Route path="/:user/starred">
-					<Button label={'Back'} onClick={() => history.push(`/${value}`)} />
-					<Starred />
+					<Button
+						label={'Back'}
+						onClick={() => history.push(`/${value}`)}
+						icon={'fa-chevron-left'}
+						bootstrap={'mt-2'}
+					/>
+					<Repos data={starredData} />
 				</Route>
 				<Route path="/:user/repos">
-					<Button label={'Back'} onClick={() => history.push(`/${value}`)} />
+					<Button
+						label={'Back'}
+						onClick={() => history.push(`/${value}`)}
+						icon={'fa-chevron-left'}
+						bootstrap={'mt-2'}
+					/>
 					<Repos data={repoData} />
 				</Route>
 				<Route path="/:user">
