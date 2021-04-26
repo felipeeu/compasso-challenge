@@ -45,8 +45,13 @@ function App() {
 	};
 
 	return (
-		<div className="container-sm p-3">
-			<Search value={value} setValue={setValue} onClick={() => fetchUser(value)} />
+		<div className="container p-3 ">
+			<nav class="navbar navbar-light bg-secondary">
+				<div clasName="container">
+					<Search value={value} setValue={setValue} onClick={() => fetchUser(value)} />
+				</div>
+			</nav>
+
 			<Switch>
 				<Route path="/:user/starred">
 					<Button

@@ -1,7 +1,7 @@
 import Button from './components/Button';
 const User = ({ data, fetchRepos, fetchStarred }) => {
 	return (
-		<div className="card mb-3 mt-2 ">
+		<div className="card mb-3 mt-2 bg-light ">
 			<img src={data.avatar_url} className="rounded-circle w-25 p-3 align-self-center" alt="avatar" />
 			<div className="card-body">
 				<h2 className="card-title">{data.name}</h2>

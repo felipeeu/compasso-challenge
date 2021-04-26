@@ -1,15 +1,15 @@
 const Repos = ({ data }) => {
 	return (
-		<div className="card mb-3 mt-2 ">
+		<div className="card mb-3 mt-2 bg-secondary">
 			<div className="card-body">
 				{data &&
 					data.map((repo, idx) => {
 						return (
-							<div className="card mb-3 mt-2 " key={idx}>
-								<div className="card-body">
+							<div className="card mb-3 mt-2 bg-light" key={idx}>
+								<div className="card-body ">
 									<h3>{repo.name}</h3>
 								</div>
-								<div className="card-body">
+								<div className="card-body ">
 									<span className="badge bg-success mx-1">
 										<i className="fa fa-star" />
 										<span className="px-1">star: {repo.stargazers_count}</span>
