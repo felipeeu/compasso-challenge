@@ -18,15 +18,6 @@ yarn start
 - Endpoint starred: https://api.github.com/users/USER_NAME/starred{/owner}{/repo}
 
 
-# Demo
-
-## Home
-![](./src/demo/demoHome.png)
-## Repos 
-![](./src/demo/demoAddTool.png)
-## Starreds
-![](./src/demo/demoDeleteTool.png)
-
 
 ### Tech
 
